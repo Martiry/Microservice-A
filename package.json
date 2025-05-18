@@ -2,10 +2,12 @@
   "name": "microservice-a",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "microservice-auth/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "start": "node microservice-auth/server.js",
+  "dev": "nodemon microservice-auth/server.js",
+  "test": "nodemon --exec node microservice-auth/testClient.js"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Martiry/Microservice-A.git"
@@ -22,5 +24,8 @@
     "body-parser": "^2.2.0",
     "express": "^5.1.0",
     "express-async-handler": "^1.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
