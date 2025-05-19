@@ -1,4 +1,4 @@
-# Microservice Auth - Communication Contract
+# Microservice Auth
 
 ## Overview
 
@@ -43,4 +43,5 @@ console.log(response.data);
 
 ---
 # UML Sequence Diagram
-![uml](https://github.com/user-attachments/assets/ef05b4c9-cfbf-4808-b82a-220c03c0eee3)
+
+![uml](https://github.com/user-attachments/assets/fb036c74-a8af-4b4f-b522-f925886a2b71)
