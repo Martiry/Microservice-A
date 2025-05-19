@@ -16,7 +16,7 @@ const testUser2 = {
 
 const testUser2Correct = {
   username: 'user2',
-  password: 'password2', // replace with actual password in users.json
+  password: 'password2',
   rememberMe: true
 };
 
@@ -37,7 +37,7 @@ async function testAuthFlow() {
     const rememberRes1 = await axios.post(`${BASE_URL}/remember-me`, { token: token1 });
     console.log('✅ testUser1 Remember Me Validated:', rememberRes1.data);
 
-    await delay(1500);
+    await delay(1000);
 
     console.log('3️⃣ Attempting login with user2 (expect fail)...');
     try {
@@ -47,13 +47,14 @@ async function testAuthFlow() {
       console.log('✅ user2 Login Failed as expected:', err.response.data);
     }
 
-    await delay(1500);
+    await delay(1000);
 
     console.log('4️⃣ Logging out testUser1...');
-    const logoutRes1 = await axios.post(`${BASE_URL}/logout`, { username: testUser1.username });
+    const logoutRes1 = await axios.post(`${BASE_URL}/logout`, {}, { headers: { Authorization: `Bearer ${token1}` } });
     console.log('✅ testUser1 Logout Response:', logoutRes1.data);
 
-    await delay(1500);
+
+    await delay(1000);
 
     console.log('5️⃣ Validating testUser1 token after logout (should fail)...');
     try {
@@ -63,14 +64,14 @@ async function testAuthFlow() {
       console.log('✅ testUser1 Remember Me Failed as expected:', err.response.data);
     }
 
-    await delay(1500);
+    await delay(1000);
 
     console.log('6️⃣ Logging in user2 with correct password...');
     const loginRes2 = await axios.post(`${BASE_URL}/login`, testUser2Correct);
     console.log('✅ user2 Login Response:', loginRes2.data);
     const token2 = loginRes2.data.token;
 
-    await delay(1500);
+    await delay(1000);
 
     console.log('7️⃣ Validating user2 with remember-me token...');
     const rememberRes2 = await axios.post(`${BASE_URL}/remember-me`, { token: token2 });
